@@ -1,0 +1,188 @@
+
+
+
+CREATE TABLE Produtos (
+    idProduto INT IDENTITY(1,1) PRIMARY KEY,
+    nome NVARCHAR(100) NOT NULL,
+    descrição NVARCHAR(500),
+    Preço DECIMAL(10,2) NOT NULL,
+    estoque INT NOT NULL,
+    dataCriacao DATETIME DEFAULT GETDATE(),
+    dataAtualizacao DATETIME DEFAULT GETDATE(),
+    CONSTRAINT CK_Preco CHECK (Preço >= 0),
+    CONSTRAINT CK_Estoque CHECK (Estoque >= 0)
+);
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+-- Adiciona produtos à tabela Produtos
+INSERT INTO Produtos (Nome, Descrição, Preço, Estoque)
+VALUES 
+    ('Produto 1', 'Descrição do Produto 1', 10.99, 100),
+    ('Produto 2', 'Descrição do Produto 2', 20.49, 50),
+    ('Produto 3', 'Descrição do Produto 3', 5.99, 200),
+    ('Produto 4', 'Descrição do Produto 4', 15.79, 75),
+    ('Produto 5', 'Descrição do Produto 5', 8.29, 120),
+    ('Produto 6', 'Descrição do Produto 6', 18.99, 80),
+    ('Produto 7', 'Descrição do Produto 7', 12.49, 150),
+    ('Produto 8', 'Descrição do Produto 8', 9.99, 100),
+    ('Produto 9', 'Descrição do Produto 9', 14.59, 90),
+    ('Produto 10', 'Descrição do Produto 10', 22.99, 60),
+    ('Produto 11', 'Descrição do Produto 11', 7.89, 110),
+    ('Produto 12', 'Descrição do Produto 12', 11.99, 130),
+    ('Produto 13', 'Descrição do Produto 13', 6.49, 95),
+    ('Produto 14', 'Descrição do Produto 14', 19.99, 70),
+    ('Produto 15', 'Descrição do Produto 15', 25.49, 40),
+    ('Produto 16', 'Descrição do Produto 16', 4.99, 180),
+    ('Produto 17', 'Descrição do Produto 17', 13.99, 85),
+    ('Produto 18', 'Descrição do Produto 18', 16.79, 120),
+    ('Produto 19', 'Descrição do Produto 19', 23.49, 55),
+    ('Produto 20', 'Descrição do Produto 20', 29.99, 25);
+
+
+	-------------------------------------------------------------------------------------------------------
+
+	CREATE TABLE Clientes (
+    idCliente INT IDENTITY(1,1) PRIMARY KEY,
+    nome NVARCHAR(100) NOT NULL,
+    sobrenome NVARCHAR(100) NOT NULL,
+    email NVARCHAR(100),
+    telefone NVARCHAR(20),
+    endereco NVARCHAR(255),
+    cidade NVARCHAR(100),
+    estado NVARCHAR(50),
+    CEP NVARCHAR(10)
+);
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+-- Adiciona clientes à tabela Clientes
+INSERT INTO Clientes (Nome, Sobrenome, Email, Telefone, Endereco, Cidade, Estado, CEP)
+VALUES 
+    ('Maria', 'Silva', 'maria@email.com', '(11) 1234-5678', 'Rua A, 123', 'São Paulo', 'SP', '01234-567'),
+    ('João', 'Santos', 'joao@email.com', '(22) 9876-5432', 'Avenida B, 456', 'Rio de Janeiro', 'RJ', '21000-000'),
+    ('Ana', 'Oliveira', 'ana@email.com', '(33) 2468-1357', 'Travessa C, 789', 'Belo Horizonte', 'MG', '30000-000'),
+    ('Carlos', 'Souza', 'carlos@email.com', '(44) 3698-7412', 'Alameda D, 321', 'Curitiba', 'PR', '80000-000'),
+    ('Juliana', 'Ferreira', 'juliana@email.com', '(55) 7531-9852', 'Praça E, 654', 'Porto Alegre', 'RS', '90000-000'),
+    ('Pedro', 'Gomes', 'pedro@email.com', '(66) 1593-2468', 'Rua F, 987', 'Salvador', 'BA', '40000-000'),
+    ('Mariana', 'Costa', 'mariana@email.com', '(77) 8521-3698', 'Avenida G, 741', 'Fortaleza', 'CE', '60000-000'),
+    ('Fernando', 'Martins', 'fernando@email.com', '(88) 9632-5874', 'Rua H, 852', 'Recife', 'PE', '50000-000'),
+    ('Camila', 'Rodrigues', 'camila@email.com', '(99) 4875-1236', 'Travessa I, 963', 'Manaus', 'AM', '69000-000'),
+    ('Rafael', 'Lima', 'rafael@email.com', '(11) 3698-7412', 'Alameda J, 147', 'Brasília', 'DF', '70000-000'),
+    ('Amanda', 'Almeida', 'amanda@email.com', '(22) 7531-9852', 'Avenida K, 258', 'Natal', 'RN', '59000-000'),
+    ('Lucas', 'Santana', 'lucas@email.com', '(33) 1593-2468', 'Rua L, 369', 'João Pessoa', 'PB', '58000-000'),
+    ('Patrícia', 'Rocha', 'patricia@email.com', '(44) 8521-3698', 'Travessa M, 852', 'Florianópolis', 'SC', '88000-000'),
+    ('Felipe', 'Carvalho', 'felipe@email.com', '(55) 9632-5874', 'Avenida N, 963', 'Vitória', 'ES', '29000-000'),
+    ('Natália', 'Nunes', 'natalia@email.com', '(66) 4875-1236', 'Rua O, 147', 'Belém', 'PA', '66000-000'),
+    ('Gabriel', 'Pereira', 'gabriel@email.com', '(77) 3698-7412', 'Alameda P, 258', 'Cuiabá', 'MT', '78000-000'),
+    ('Isabela', 'Melo', 'isabela@email.com', '(88) 7531-9852', 'Avenida Q, 369', 'Campo Grande', 'MS', '79000-000'),
+    ('Matheus', 'Cardoso', 'matheus@email.com', '(99) 1593-2468', 'Rua R, 852', 'Maceió', 'AL', '57000-000'),
+    ('Larissa', 'Oliveira', 'larissa@email.com', '(11) 8521-3698', 'Travessa S, 963', 'Teresina', 'PI', '64000-000'),
+    ('Daniel', 'Gonçalves', 'daniel@email.com', '(22) 9632-5874', 'Avenida T, 147', 'São Luís', 'MA', '65000-000'),
+    ('Jéssica', 'Ferreira', 'jessica@email.com', '(33) 4875-1236', 'Rua U, 258', 'Goiânia', 'GO', '74000-000'),
+    ('Vinícius', 'Sousa', 'vinicius@email.com', '(44) 3698-7412', 'Alameda V, 369', 'Aracaju', 'SE', '49000-000'),
+    ('Carolina', 'Mendes', 'carolina@email.com', '(55) 7531-9852', 'Avenida W, 852', 'Palmas', 'TO', '77000-000'),
+    ('Bruno', 'Araújo', 'bruno@email.com', '(66) 1593-2468', 'Rua X, 963', 'Boa Vista', 'RR', '69300-000'),
+    ('Débora', 'Barbosa', 'debora@email.com', '(77) 8521-3698', 'Travessa Y, 147', 'Rio Branco', 'AC', '69900-000'),
+    ('Thiago', 'Lima', 'thiago@email.com', '(88) 9632-5874', 'Avenida Z, 258', 'Macapá', 'AP', '68900-000'),
+    ('Letícia', 'Gomes', NULL, NULL, 'Rua 1, 123', 'Criciúma', 'SC', '88800-000'),
+    ('Ricardo', 'Silva', NULL, NULL, 'Avenida 2, 456', 'Joinville', 'SC', '89200-000'),
+    ('Patrícia', 'Santos', NULL, NULL, 'Travessa 3, 789', 'Blumenau', 'SC', '89000-000');
+
+
+-------------------------------------------------------------------------------------------------------
+
+
+	CREATE TABLE ItensCompra (
+    idItem INT IDENTITY(1,1) PRIMARY KEY,
+    idCliente INT,
+    idProduto INT,
+    Quantidade INT,
+    DataHoraCompra DATETIME DEFAULT GETDATE(),
+    FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente),
+    FOREIGN KEY (idProduto) REFERENCES Produtos(idProduto)
+);
+
+
+-------------------------------------------------------------------------------------------------------
+
+CREATE TABLE CarrinhoDeCompras (
+    idCarrinho INT IDENTITY(1,1) PRIMARY KEY,
+    idCliente INT NOT NULL,
+    idProduto INT NOT NULL,
+    Quantidade INT NOT NULL,
+    FOREIGN KEY (idCliente) REFERENCES Clientes(idCliente),
+    FOREIGN KEY (idProduto) REFERENCES Produtos(idProduto)
+);
+
+-------------------------------------------------------------------------------------------------------
+
+INSERT INTO CarrinhoDeCompras (idCliente, idProduto, Quantidade)
+VALUES (1, 1, 2);
+
+-------------------------------------------------------------------------------------------------------
+
+
+
+
+-- Cliente 1 compra 2 unidades do Produto 1 e 1 unidade do Produto 3
+INSERT INTO ItensCompra (idCliente, idProduto, Quantidade)
+VALUES (1, 12, 2), -- Cliente 1 comprou 2 unidades do Produto 1
+       (1, 13, 1); -- Cliente 1 comprou 1 unidade do Produto 3
+
+-- Cliente 2 compra 3 unidades do Produto 2
+INSERT INTO ItensCompra (idCliente, idProduto, Quantidade)
+VALUES (2, 2, 3); -- Cliente 2 comprou 3 unidades do Produto 2
+
+
+
+-------------------------------------------------------------------------------------------------------
+
+--Todos os clientes e seus produtos add
+
+SELECT 
+    cl.Nome AS NomeCliente,
+    p.Nome AS NomeProduto,
+    ic.Quantidade,
+    p.Preço AS PrecoProduto,
+    p.Preço * ic.Quantidade AS Subtotal,
+    SUM(p.Preço * ic.Quantidade) OVER(PARTITION BY ic.idCliente) AS ValorTotalCompra
+FROM 
+    ItensCompra ic
+JOIN 
+    Produtos p ON ic.idProduto = p.idProduto
+JOIN 
+    Clientes cl ON ic.idCliente = cl.idCliente;
+
+
+-------------------------------------------------------------------------------------------------------
+--um clientes e seus produtos add
+
+	SELECT 
+    cl.Nome AS NomeCliente,
+    p.Nome AS NomeProduto,
+    ic.Quantidade AS Quantidade,
+    p.Preço AS ValorItem,
+    p.Preço * ic.Quantidade AS SubtotalItem,
+    SUM(p.Preço * ic.Quantidade) OVER(PARTITION BY cl.idCliente) AS TotalCompra
+FROM 
+    ItensCompra ic
+JOIN 
+    Produtos p ON ic.idProduto = p.idProduto
+JOIN 
+    Clientes cl ON ic.idCliente = cl.idCliente
+WHERE 
+    cl.idCliente = 1;
+
+ 
+-------------------------------------------------------------------------------------------------------
+
+
+
+ DELETE FROM ItensCompra
+WHERE idCliente = 1 -- Maria
+AND idProduto = 3; -- Produto a ser removido
